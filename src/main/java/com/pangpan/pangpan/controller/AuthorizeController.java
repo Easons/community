@@ -1,18 +1,15 @@
 package com.pangpan.pangpan.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.pangpan.pangpan.dto.AccessTokenDTO;
 import com.pangpan.pangpan.dto.GitHubUser;
 import com.pangpan.pangpan.provider.GithubProvider;
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AuthorizeController {
@@ -30,7 +27,7 @@ public class AuthorizeController {
     private  String redirectUri;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code") String code,@RequestParam(name = "state") String state){
+    public String callback(@RequestParam(name = "code") String code, @RequestParam(name = "state") String state, HttpServletRequest request){
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
 
@@ -45,12 +42,15 @@ public class AuthorizeController {
 
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
 
-        GitHubUser gitHubUser = githubProvider.getUser(accessToken);
+        GitHubUser user = githubProvider.getUser(accessToken);
 
-        System.out.println(gitHubUser.getId()+gitHubUser.getName());
-
-
-
-        return "index";
+        if(user !=null)
+        {//放入session 和 cookie
+            request.getSession().setAttribute("user",user);
+            return "redirect:/";
+        }else{
+            //登陆失败，重新登陆
+            return "redirect:/";
+        }
     }
 }
