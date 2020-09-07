@@ -1,5 +1,8 @@
 package com.pangpan.pangpan.dto;
 
+/**
+ * 网络传输的叫dto，数据库的叫做model
+ */
 public class AccessTokenDTO {
 
     private  String   client_id	;
