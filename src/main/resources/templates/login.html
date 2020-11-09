@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>登陆</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <form class="form-signin" action="login.html" th:action="@{/user/login}" method="post">
+  <img class="mb-4" src="/img/bootstrap-solid.png" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+      <p style="color: red" th:text="${msg}" th:if="${ not #strings.isEmpty(msg)}"></p>
+  <label for="username" class="sr-only" th:text="#{login.username}">UserName</label>
+  <input type="text" id="username" name="username" class="form-control" placeholder="UserName" th:placeholder="#{login.username}" required autofocus>
+  <label for="password" class="sr-only" th:text="#{login.password}">Password</label>
+  <input type="password" id="password" name="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me">[[#{login.remember}]]
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+
+  <p class="mt-5 mb-3 text-muted">2017-2020</p>
+   <a class="btn btn-sm" th:href="@{/index(l='zh_CN')}">中文</a>
+   <a class="btn btn-sm" th:href="@{/index(l='en_US')}">英文</a>
+</form>
+</body>
+</html>

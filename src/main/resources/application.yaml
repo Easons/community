@@ -1,0 +1,23 @@
+##debug: true
+server:
+  port: 8080
+spring:
+  profiles:
+    active: test
+---
+server:
+  port: 8081
+spring:
+  profiles: dev
+
+
+---
+server:
+  port: 8082
+spring:
+  profiles: test
+  messages:
+    basename: i18n.login
+  thymeleaf:
+    cache: false
+
