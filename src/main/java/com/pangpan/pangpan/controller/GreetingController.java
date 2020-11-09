@@ -23,30 +23,28 @@ public class GreetingController {
         return "greeting";
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(HttpServletRequest request) {
 
         Cookie[] cookies =  request.getCookies();
 
-        if(cookies !=null)
-        {
-            for (Cookie cookie : cookies) {
-
-                if(cookie.getName().equals("token"))
-                {
-                    String token = cookie.getValue();
-                    User user =  userMapper.findByToken(token);
-                    if(user != null)
-                    {
-                        request.getSession().setAttribute("user",user);
-                    }
-                    break;
-                }
-            }
-        }
-
-
-        return "index";
+//        if(cookies !=null)
+//        {
+//            for (Cookie cookie : cookies) {
+//
+//                if(cookie.getName().equals("token"))
+//                {
+//                    String token = cookie.getValue();
+//                    User user =  userMapper.findByToken(token);
+//                    if(user != null)
+//                    {
+//                        request.getSession().setAttribute("user",user);
+//                    }
+//                    break;
+//                }
+//            }
+//        }
+        return "login";
     }
 
 }
