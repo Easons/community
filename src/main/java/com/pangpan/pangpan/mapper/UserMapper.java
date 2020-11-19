@@ -13,4 +13,6 @@ public interface UserMapper {
 
     @Select("Select * FROM user where token = #{token}")
     User findByToken(String token);
+
+    User Sel(int id);
 }
