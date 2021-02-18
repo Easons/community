@@ -24,7 +24,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.1.103:3306/jdbc
+    url: jdbc:mysql://192.168.56.10:3306/dbtest01
     driver-class-name: com.mysql.jdbc.Driver
     ##运行脚本sql文件
 #    schema:
@@ -49,4 +49,10 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  jpa:
+    show-sql: true #是否打印sql
+    properties:
+      hibernate:
+        format_sql: true
+
 

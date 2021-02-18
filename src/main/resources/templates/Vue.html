@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<script type="text/css">
+    .base {
+        width: 100px;
+        height: 100px;
+    }
+    .active {
+        background: green;
+    }
+    .text-danger {
+        background: red;
+    }
+
+</script>
+
+<!--<div id="app">-->
+<!--            {{ a }}-->
+<!--</div>-->
+
+<div id="vue_det">
+    <!--        <h5>site : {{site}}</h5>-->
+    <!--        <h5>url : {{url}}</h5>-->
+    <!--        <h5>Alexa : {{alexa}}</h5>-->
+    <!--        <div v-html="message"></div>-->
+    <!--        <div v-bind:class="{'class1': use}">-->
+    <!--            v-bind:class 指令-->
+    <!--        </div>-->
+
+    {{5+5}}<br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ message.split('').reverse().join('') }}<!--字符串翻转重组成字符串-->
+    <div v-bind:id="'list-' + id">菜鸟教程</div>
+    <p v-if="seen">现在你看到我了</p><!--根据seen的值为true或者false来显示，true时显示P标签-->
+    <pre><a v-bind:href="url">百度链接</a></pre>
+
+    <input type="button" v-on:click="item+=1;check();">
+    <div>{{item}}</div>
+    {{ filtData | capitalize }}
+
+    <!--if else if-->
+    <div v-if="Math.random() > 0.5">
+        Sorry
+    </div>
+    <div v-else>
+        Not sorry
+    </div>
+    <div v-if="item==1">
+        <p>item=1</p>
+    </div>
+    <div v-else-if="item==2">
+        <p>item=2</p>
+    </div>
+
+    <h5 v-show="seen">Hello!</h5>
+
+    <!--循环值-->
+<!--    <ol>-->
+<!--        <ul v-for="site,name in sites" :key="name">-->
+<!--            {{site.name}}-->
+<!--            <li v-for="sitess,key in site.love" >-->
+<!--                {{key}}-->
+<!--                {{ sitess.ball }}-->
+<!--                {{ sitess.project }}-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </ol>-->
+
+    <!--循环整数-->
+<!--    <ul>-->
+<!--        <li v-for="n in 10">-->
+<!--            {{ n }}-->
+<!--        </li>-->
+<!--    </ul>-->
+
+<!--    <p>原始字符串: {{ message }}</p>-->
+<!--    <p>计算后反转字符串: {{ reversedMessage }}{{set}}</p>-->
+
+    <!--switch-->
+<!--    <p style = "font-size:10px;">计数器: {{ counter }}</p>-->
+<!--    <button @click = "counter++" style = "font-size:10px;">点我</button>  -->
+    <!--和上述写法一样-->
+<!--    <button v-on:click = "counter++" style = "font-size:10px;">点我</button>-->
+    <!--switch end-->
+
+    <!--实现千米和米的计算-->
+<!--    <div id = "computed_props">-->
+<!--        千米 : <input type = "text" v-model = "kilometers">-->
+<!--        米 : <input type = "text" v-model = "meters">-->
+<!--    </div>-->
+<!--    <p id="info"></p>-->
+<!--    -->
+
+    <!--属性绑定-->
+<!--    <div id="app">-->
+<!--        <div v-bind:class="classObject"></div>-->
+<!--    </div>-->
+
+<!--    <div id="app">-->
+<!--        &lt;!&ndash; `greet` 是在下面定义的方法名 &ndash;&gt;-->
+<!--        <button v-on:click="greet">Greet</button>-->
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; 阻止单击事件冒泡 &ndash;&gt;-->
+<!--    <a v-on:click.stop="doThis"></a>-->
+<!--    &lt;!&ndash; 提交事件不再重载页面 &ndash;&gt;-->
+<!--    <form v-on:submit.prevent="onSubmit"></form>-->
+<!--    &lt;!&ndash; 修饰符可以串联  &ndash;&gt;-->
+<!--    <a v-on:click.stop.prevent="doThat"></a>-->
+<!--    &lt;!&ndash; 只有修饰符 &ndash;&gt;-->
+<!--    <form v-on:submit.prevent></form>-->
+<!--    &lt;!&ndash; 添加事件侦听器时使用事件捕获模式 &ndash;&gt;-->
+<!--    <div v-on:click.capture="doThis">...</div>-->
+<!--    &lt;!&ndash; 只当事件在该元素本身（而不是子元素）触发时触发回调 &ndash;&gt;-->
+<!--    <div v-on:click.self="doThat">...</div>-->
+
+<!--    &lt;!&ndash; click 事件只能点击一次，2.1.4版本新增 &ndash;&gt;-->
+<!--    <a v-on:click.once="doThis"></a>-->
+
+<!--    <div id="app">-->
+<!--        <p>input 元素：</p>-->
+<!--        <input v-model="message" placeholder="编辑我……">-->
+<!--        <p>消息是: {{ message }}</p>-->
+
+<!--        <p>textarea 元素：</p>-->
+<!--        <p style="white-space: pre">{{ message2 }}</p>-->
+<!--        <textarea v-model="message2" placeholder="多行文本输入……"></textarea>-->
+
+<!--        <p>单个复选框：</p>-->
+<!--        <input type="checkbox" id="checkbox" v-model="checked">-->
+<!--        <label for="checkbox">{{ checked }}</label>-->
+
+<!--        <p>多个复选框：</p>-->
+<!--        <input type="checkbox" id="checkbox" value="123" v-model="checkedName" v-on:click="checkOnclick">-->
+<!--        &lt;!&ndash;label 中的for 和 input中的id值对应&ndash;&gt;-->
+<!--        <label for="checkbox">123</label>-->
+<!--        <input type="checkbox" id="checkbox" value="456" v-model="checkedName">-->
+<!--        <label for="checkbox">456</label>-->
+<!--        <span>选择的值为：{{checkedName}}</span>-->
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; 在 "change" 而不是 "input" 事件中更新 &ndash;&gt;-->
+<!--    <input v-model.lazy="msg" >-->
+
+<!--    <input v-model.number="age" type="number">-->
+
+        <!--组件-->
+<!--        <div id="app">-->
+<!--            <runoob></runoob>-->
+<!--            <runoobel></runoobel>-->
+<!--        </div>-->
+
+<!--    <div id="app">-->
+<!--        <child message="hello!"></child>-->
+<!--    </div>-->
+
+<!--    <div id="app">-->
+<!--        <div>-->
+<!--            <input v-model="parentMsg">-->
+<!--            <br>-->
+<!--            &lt;!&ndash;绑定message属性的值&ndash;&gt;-->
+<!--            <child v-bind:message="parentMsg"></child>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div id = 'app'>-->
+<!--        <ul>-->
+<!--            <child v-for="sites in site" v-bind:todo="sites"></child>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    <div id="app">-->
+<!--        <div id="counter-event-example">-->
+<!--            <p>{{ total }}</p>-->
+<!--            <button-counter v-on:increment="incrementTotal"></button-counter>-->
+<!--            <button-counter v-on:increment="incrementTotal"></button-counter>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div id="components-demo3" class="demo">-->
+<!--        <button-counter2></button-counter2>-->
+<!--        <button-counter2></button-counter2>-->
+<!--        <button-counter2></button-counter2>-->
+<!--    </div>-->
+
+    <div id="app">
+        <runoob-input v-model="num"></runoob-input>
+        <p>输入的数字为:{{num}}</p>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+
+<script src="G:/Study_IDEA/pangpan/src/main/resources/templates/js/TestVue.js" type="text/javascript"></script>
+
+</html>
