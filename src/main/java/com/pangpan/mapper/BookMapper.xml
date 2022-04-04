@@ -13,4 +13,20 @@
         select * from book where id = #{id}
     </select>
 
+    <select id="findAll" resultType="com.pangpan.model.Book">
+        select * from book
+    </select>
+
+    <insert id="addBood" parameterType="com.pangpan.model.Book" useGeneratedKeys="true" keyProperty="id">
+        insert into book(name,author) values(#{name},#{author})
+    </insert>
+
+    <update id="updateBook" parameterType="com.pangpan.model.Book">
+        update book set name=#{name},author=#{author} where id=#{id}
+    </update>
+
+    <delete id="deleteBook">
+        delete from book where id = #{id}
+    </delete>
+
 </mapper>
